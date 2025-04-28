@@ -21,6 +21,8 @@ function getHumanChoice() {
 }
 /*console.log(getHumanChoice())*/
 
+function playGame() {
+
 /* Keeping score of the game */
 let humanScore = 0
 let computerScore = 0
@@ -44,8 +46,26 @@ function playRound(humanChoice, computerChoice) {
         computerScore++;
     }
 }
+/* Make the game last 5 rounds*/
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+for (let i = 0; i < 5; i++) {
+    let humanChoice = prompt("Enter rock, paper, or scissors:");
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
 
-playRound(humanSelection, computerSelection);
+    console.log(`Score after Round ${i + 1}: Human ${humanScore} - Computer ${computerScore}`);
+}
+
+/* Winner announcement */
+
+if (humanScore > computerScore) {
+    console.log(`You won the game! Final score: Human ${humanScore} - Computer ${computerScore}`);
+} else if (computerScore > humanScore) {
+    console.log(`You lost the game! Final score: Human ${humanScore} - Computer ${computerScore}`);
+} else {
+    console.log(`The game is a tie! Final score: Human ${humanScore} - Computer ${computerScore}`);
+}
+
+}
+
+playGame()
